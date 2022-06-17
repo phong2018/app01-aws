@@ -7,6 +7,6 @@ RUN rm -rf ./*
 # Copy static assets over
 COPY ./* ./
 
-EXPOSE 8080
+EXPOSE 80
 # Containers run nginx with global directives and daemon off
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
