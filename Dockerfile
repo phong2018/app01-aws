@@ -1,16 +1,10 @@
-FROM --platform=linux/amd64 node:16
-
-#create app directory
-WORKDIR /app
-
-# install dependencies 
-# A Wildcard to make sure that we will copy both package.json and package-lock.json
-COPY package*.json /app/
-
-RUN npm install
-
-# Bundle app source
-COPY . . 
-
-EXPOSE 8080
-CMD ["npm", "start"]
+# nginx state for serving content
+FROM nginx:alpine
+# Set working directory to nginx asset directory
+WORKDIR /usr/share/nginx/html
+# Remove default nginx static assets
+RUN rm -rf ./*
+# Copy static assets over
+COPY ./* ./
+# Containers run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
