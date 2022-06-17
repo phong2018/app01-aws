@@ -1,0 +1,1 @@
+- repository: 556266730771.dkr.ecr.us-east-1.amazonaws.com/app01-repository
